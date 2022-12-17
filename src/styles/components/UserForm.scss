@@ -1,0 +1,19 @@
+@use '../variables' as *;
+
+.user-form {
+    width: 100%;
+    
+    .header {
+        @include cardHeader;
+    }
+
+    .card-body {
+        padding: 1.25rem;
+    }
+
+    .buttons {
+        display: flex;
+        justify-content: flex-end;
+        gap: 1rem;
+    }
+}

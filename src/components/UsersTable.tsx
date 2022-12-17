@@ -11,7 +11,7 @@ type Props = {
     onDelete: (user: User) => void;
 }
 
-export function UsersTable({ users, isLoading, onEdit, onDelete }: Props) {
+export default function UsersTable({ users, isLoading, onEdit, onDelete }: Props) {
     return (
         <div className="table-wrapper">
             <Table hover responsive>

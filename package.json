@@ -16,6 +16,7 @@
     "react-bootstrap-icons": "^1.10.2",
     "react-dom": "^18.2.0",
     "react-redux": "^8.0.5",
+    "react-router-dom": "^6.5.0",
     "redux-logger": "^3.0.6",
     "vite-tsconfig-paths": "^4.0.3"
   },
