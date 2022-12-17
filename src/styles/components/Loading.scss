@@ -1,0 +1,20 @@
+.loading-indicator {
+    text-align: center;
+    margin: 2rem auto;
+    color: #636363;
+    
+    img {
+        height: 7rem;
+        margin: 2rem;
+        animation: rotation 3s infinite linear;
+
+        @keyframes rotation {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(359deg); }
+        }
+    }
+
+    .loading-text {
+        font-size: 1.5rem;
+    }
+}
