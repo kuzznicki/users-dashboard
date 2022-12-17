@@ -37,6 +37,10 @@ const slice = createSlice({
             .addCase(updateUser.fulfilled, (state, action) => {
                 const userIndex = state.data.findIndex(user => user.id === action.payload.id);
                 if (userIndex !== -1) state.data[userIndex] = action.payload;
+            })
+            .addCase(deleteUser.fulfilled, (state, action) => {
+                const userIndex = state.data.findIndex(user => user.id === action.payload);
+                if (userIndex !== -1) state.data.splice(userIndex, 1);
             });
         }
 });
@@ -55,6 +59,10 @@ export const addUser = createAsyncThunk('users/addUser', async (user: Omit<User,
 export const updateUser = createAsyncThunk('users/editUser', async (user: User) => {
     assertUser(user);
     return await api.patchUser(user);
+});
+
+export const deleteUser = createAsyncThunk('users/deleteUser', async (userId: number) => {
+    return await api.deleteUser(userId);
 });
 
 export const getUser = (state: RootState, userId: number) => state.users.data.find(user => user.id === userId);

@@ -25,13 +25,10 @@ export default {
             return users;
             
         } catch (e) {
-            throw new Error('Failed to fetch users data from the API.');
+            throw new Error('Failed to fetch users.');
         }
     },
     postUser: async (user: Omit<User, 'id'>) => {
-        console.log('posting user');
-        await new Promise(resolve => setTimeout(resolve, 1000));
-
         try {
             const response = await fetch(API_URL, {
                 method: 'POST',
@@ -47,13 +44,10 @@ export default {
             return apiDataToUser(json);
 
         } catch (e) {
-            throw new Error('Failed to post user data to the API.');
+            throw new Error('Failed to post user.');
         }
     },
     patchUser: async (user: User) => {
-        console.log('patching user');
-        await new Promise(resolve => setTimeout(resolve, 1000));
-
         try {
             const response = await fetch(`${API_URL}/${user.id}`, {
                 method: 'PATCH',
@@ -68,7 +62,17 @@ export default {
             return apiDataToUser(json);
 
         } catch (e) {
-            throw new Error('Failed to patch user data to the API.');
+            throw new Error('Failed to patch user.');
+        }
+    },
+    deleteUser: async (id: number) => {
+        try {
+            const response = await fetch(`${API_URL}/${id}`, { method: 'DELETE' });
+            if (!response.ok) throw new Error(response.statusText);
+            return id;
+
+        } catch (e) {
+            throw new Error('Failed to delete user.');
         }
     }
 }

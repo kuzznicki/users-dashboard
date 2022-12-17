@@ -1,8 +1,8 @@
 import { Table, Button } from 'react-bootstrap';
 import { InfoCircle } from 'react-bootstrap-icons';
+import Loading from '@/components/Loading';
 import { User } from '@/types';
 import '@/styles/components/UsersTable.scss';
-import Loading from './Loading';
 
 type Props = {
     users: User[];
@@ -31,8 +31,12 @@ export default function UsersTable({ users, isLoading, onEdit, onDelete }: Props
                                 <td>{user.username}</td>
                                 <td>{user.email}</td>
                                 <td>{user?.address?.city || '(empty)'}</td>
-                                <td><Button variant="warning">Edit</Button></td>
-                                <td><Button variant="danger">Delete</Button></td>
+                                <td>
+                                    <Button variant="warning" onClick={() => onEdit(user)}>Edit</Button>
+                                </td>
+                                <td>
+                                    <Button variant="danger" onClick={() => onDelete(user)}>Delete</Button>
+                                </td>
                             </tr>
                         )
                     })}
@@ -47,6 +51,5 @@ export default function UsersTable({ users, isLoading, onEdit, onDelete }: Props
                 </div>
             )}
         </div>
-
     );
 }
