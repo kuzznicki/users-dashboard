@@ -1,20 +1,14 @@
+import { Bug as Icon } from 'react-bootstrap-icons'
 import '@/styles/components/ErrorMessage.scss';
-import { Bug } from 'react-bootstrap-icons'
 
-type Props = { 
-    title?: string;
-    message?: string
-};
-
-export default function ErrorMessage({ title = 'Something went wrong', message = 'Please try again.'}: Props) {
+export default function ErrorMessage({ title = 'Something went wrong', message = 'Please try again.'}) {
     return (
         <div className="error-indicator">
             <div className="title">
-                <Bug/>
+                <Icon/>
                 <span>{title}</span>
             </div>
             {message && <div className="error-message">{message}</div>}
         </div>
     )
 }
-

@@ -1,6 +1,6 @@
 import { configureStore } from '@reduxjs/toolkit';
-import users from './reducers/usersReducer';
 import { createLogger } from 'redux-logger';
+import users from './usersReducer';
 
 const logger = createLogger();
 

@@ -2,7 +2,7 @@ import { isUser, User } from '../types';
 
 const API_URL = 'https://my-json-server.typicode.com/karolkproexe/jsonplaceholderdb/data';
 let maxId = 0;
-const generateId = () => ++maxId; // API doesn't return the id
+const generateId = () => ++maxId; // hacky way to deal with fact that json-server doesn't generate ids
 
 export default {
     getUsers: async () => {
@@ -68,7 +68,12 @@ export default {
     deleteUser: async (id: number) => {
         try {
             const response = await fetch(`${API_URL}/${id}`, { method: 'DELETE' });
-            if (!response.ok) throw new Error(response.statusText);
+            if (!response.ok) {
+                // JSONPlaceholder returns 404 when deleting a user that doesn't exist in the repository
+                // We don't want to throw an error in this case
+                // as this would not allow us to delete a user that was added locally
+                if (response.status !== 404) throw new Error(response.statusText);
+            }
             return id;
 
         } catch (e) {
@@ -83,6 +88,6 @@ function apiDataToUser(userData: User): User {
         name: userData.name,
         username: userData.username,
         email: userData.email,
-        address: userData.address ? { city: userData.address.city } : { city: '(empty)' },
+        address: userData.address ? { city: userData.address.city } : undefined,
     };
 }

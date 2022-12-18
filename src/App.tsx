@@ -1,9 +1,10 @@
 import { useEffect } from 'react';
-import { useAppDispatch, useAppSelector } from '@/hooks/redux';
-import { fetchUsers, getUsersStatus } from '@/reducers/usersReducer';
+import { Routes, Route, Link, Navigate } from 'react-router-dom';
+import { useAppDispatch, useAppSelector } from '@/redux/reduxHooks';
+import { fetchUsers, getUsersStatus } from '@/redux/usersReducer';
 import UsersList from '@/components/UsersList';
 import UserForm from '@/components/UserForm';
-import { Routes, Route, Link } from 'react-router-dom';
+import '@/styles/components/App.scss';
 
 function App() {
     const dispatch = useAppDispatch();
@@ -16,13 +17,14 @@ function App() {
     return (
         <div className="App">
             <Link to="/">
-                <h1 style={{ marginBottom: '3rem' }}>Dashboard</h1>
+                <h1>Dashboard</h1>
             </Link>
 
             <Routes>
                 <Route path="/" element={<UsersList />} />
                 <Route path="user" element={<UserForm />} />
                 <Route path="user/:userId" element={<UserForm />} />
+                <Route path="*" element={<Navigate to="/" />} />
             </Routes>
         </div>
     );

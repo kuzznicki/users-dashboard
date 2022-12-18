@@ -1,7 +1,7 @@
-import { PayloadAction, createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-import { User, FetchStatus, isUser, assertUser } from '@/types';
+import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
+import { User, FetchStatus, assertUser } from '@/types';
+import { RootState } from '@/redux/store';
 import api from '@/api/usersApi';
-import { RootState } from '@/store';
 
 type UsersState = {
     data: User[];
@@ -41,11 +41,13 @@ const slice = createSlice({
             .addCase(deleteUser.fulfilled, (state, action) => {
                 const userIndex = state.data.findIndex(user => user.id === action.payload);
                 if (userIndex !== -1) state.data.splice(userIndex, 1);
+            })
+            .addCase(deleteUser.rejected, (state, action) => {
+                state.status = 'failed';
+                state.error = action.error.message;
             });
-        }
+    }
 });
-
-export const actions = slice.actions;
 
 export const fetchUsers = createAsyncThunk('users/fetchUsers', async () => {
     return await api.getUsers();

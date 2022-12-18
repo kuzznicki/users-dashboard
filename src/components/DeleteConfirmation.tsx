@@ -10,7 +10,7 @@ type Props = {
 
 export default function DeleteConfirmation({ title, message, show, onConfirm, onClose }: Props) {
     return (
-        <Modal show={show} onHide={onClose} centered>
+        <Modal show={show} onHide={onClose} centered animation={false}>
             <Modal.Header closeButton>
                 <Modal.Title>{title}</Modal.Title>
             </Modal.Header>

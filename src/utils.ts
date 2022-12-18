@@ -5,5 +5,5 @@ export function capitalize(str: string): string {
 export const notAlphanumericOrSpaceRegex = /[^a-zA-Z0-9 ]/g;
 
 export function generateUsername(name: string) {
-    return name.replace(notAlphanumericOrSpaceRegex, '').replace(' ', '_').toLowerCase();
+    return name.trim().replace(notAlphanumericOrSpaceRegex, '').replaceAll(' ', '_').toLowerCase();
 }

@@ -1,0 +1,9 @@
+@use '../variables' as *;
+
+.App a {
+    color: $defaultFontColor;
+    
+    h1 {
+        margin-bottom: 3rem;
+    }
+}

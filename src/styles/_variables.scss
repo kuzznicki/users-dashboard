@@ -1,6 +1,8 @@
 @import 'bootstrap/scss/functions';
 @import 'bootstrap/scss/variables';
 
+$defaultFontColor: #213547;
+$bsPrimaryColor: $primary;
 $bsBorderColor: $border-color;
 $bsCardHeaderColor: $card-cap-bg;
 $bsDangerColor: $danger;

@@ -1,14 +1,10 @@
+import { Spinner } from 'react-bootstrap';
 import '@/styles/components/Loading.scss';
-import reactLogo from '@/assets/react.svg';
 
-type Props = {
-    message?: string;
-};
-
-export default function Loading({ message = 'Loading'}: Props) {
+export default function Loading({ message = 'Loading'}) {
     return (
         <div className="loading-indicator">
-            <img src={reactLogo} alt="Loading spinner" />
+            <Spinner animation="border" variant="primary"/>
             <div className='loading-text'>{message}</div>
         </div>
     );

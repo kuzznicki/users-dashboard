@@ -15,6 +15,29 @@
 
         thead {
             background-color: $bsCardHeaderColor;
+
+            th button.header-wrapper {
+                border: 0;
+                background-color: inherit;
+                color: $defaultFontColor;
+                display: flex;
+                align-items: center;
+                gap: 0.3rem;
+                cursor: initial;
+
+                &:not(:disabled):hover {
+                    text-decoration: underline;
+                    cursor: pointer;
+                }
+
+                svg {
+                    height: 0.8rem;
+                }
+            }
+        }
+
+        tbody td button {
+            min-width: 100%;
         }
     }
 
