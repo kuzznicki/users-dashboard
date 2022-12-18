@@ -1,9 +1,0 @@
-@use '../variables' as *;
-
-.users-list {
-    width: 100%;
-    
-    .header {
-        @include cardHeader;
-    }
-}
